@@ -11,3 +11,5 @@ al = alexa()
 Then you can register the launch event (Alexa, open skill): `al.registerLaunch(lambda: functionname(argument))` and your custom intents `al.registerIntent("intentName", lambda: functionname(argument))`.
 
 Lastly, put `al.route(event)` in your handler function (if you're using Lambda it'll default to `lambda_handler`).
+
+There's an example of what I just explained in `example.py`, any questions or issues drop me and email (or use the contact form on my site).
