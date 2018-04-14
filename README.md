@@ -9,7 +9,7 @@ al = alexa()
 ```
 
 Then you can register the launch event (Alexa, open skill): `al.registerLaunch(lambda: functionname(argument))` and your intents `al.registerIntent("intentName", lambda: functionname(argument))`.
-It's worth handling `AMAZON.CancelIntent`, `AMAZON.StopIntent` and `AMAZON.HelpIntent` if you intent to publish the skill.
+It's worth handling `AMAZON.CancelIntent`, `AMAZON.StopIntent` and `AMAZON.HelpIntent` if you intend to publish the skill.
 
 Lastly, put `al.route(event)` in your handler function (if you're using Lambda it'll default to `lambda_handler`).
 
