@@ -5,24 +5,25 @@ class alexa:
 
     def route(self, event):
         if event['request']['type'] == "LaunchRequest":
-            if launch is None:
+            if self.launch is None:
                 raise Exception("No launch function set. Use alexa.registerLaunch(function)")
                 
-            return speak(launch[0], endSession=False)
+            return self.speak(self.launch()[0], endSession=False)
         
         chosenIntent = event['request']['intent']['name']
-        if chosenIntent in intents:
-            return speak(intents[chosenIntent][0], endSession=intents[chosenIntent][1])
+        if chosenIntent in self.intents:
+            runIntent = self.intents[chosenIntent]()
+            return self.speak(runIntent[0], endSession=runIntent[1])
         
     def registerIntent(self, intent, intentFunction):
-        if not intent in intents:
-            launch[intent] = intentFunction
+        if not intent in self.intents:
+            self.intents[intent] = intentFunction
             return True
         return False
     
     def registerLaunch(self, intentFunction):
-        if not launch is None:
-            launch = intentFunction
+        if self.launch is None:
+            self.launch = intentFunction
             return True
         return False
 
