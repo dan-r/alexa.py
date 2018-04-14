@@ -14,7 +14,12 @@ class alexa:
         chosenIntent = event['request']['intent']['name'] # Gets the intent name
         if chosenIntent in self.intents: # If we know this intent
             runIntent = self.intents[chosenIntent]() # Run the intent
-            return self.speak(runIntent[0], endSession=runIntent[1]) # Return the speech
+            
+            if isInstance(e, list): # If a list is given then endSession depending on the second parameter (index 1)
+                return self.speak(runIntent[0], endSession=runIntent[1]) # Return the speech
+            else: # If a string is returned, end the session after responding by default
+                return self.speak(runIntent, endSession=True)
+                
         else:
             return self.speak("Sorry, I didn't understand that", endSession=True) # If we dont know this intent
         
