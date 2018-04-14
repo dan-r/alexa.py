@@ -10,7 +10,9 @@ def lambda_handler(event, context):
     
     return al.route(event)
     
+
 launchrequest = {'request':{'type':'LaunchRequest'}}
-intentrequest = {'request':{'type':'IntentRequest', 'intent':{'name':'testIntent'}}}
 print(lambda_handler(launchrequest, None))
+
+intentrequest = {'request':{'type':'IntentRequest', 'intent':{'name':'testIntent'}}}
 print(lambda_handler(intentrequest, None))
